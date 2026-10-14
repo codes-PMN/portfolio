@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio website for Pragendra Nakarmi — software developer, problem solver, and creator of modern digital experiences."
+    />
+    <title>Pragendra Nakarmi | Portfolio</title>
+    <style>
+      :root {
+        --bg: #030305;
+        --bg-soft: #0b0b10;
+        --panel: rgba(10, 10, 14, 0.82);
+        --panel-strong: #101016;
+        --white: #f5f5f7;
+        --muted: #a1a1aa;
+        --primary: #ffffff;
+        --primary-2: #c9b8ff;
+        --accent: #ffd9b0;
+        --nebula: #6d5bd0;
+        --border: rgba(255, 255, 255, 0.1);
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--white);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(18px);
+        background: rgba(3, 3, 5, 0.6);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 74px;
+      }
+
+      .brand {
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand span {
+        color: var(--primary-2);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav a {
+        transition: color 0.2s ease;
+      }
+
+      .nav a:hover {
+        color: var(--white);
+      }
+
+      .nav-cta {
+        padding: 0.75rem 1.1rem;
+        border-radius: 999px;
+        color: #050507;
+        background: var(--primary);
+        font-weight: 700;
+        border: 1px solid transparent;
+      }
+
+      .hero {
+        padding: 92px 0 72px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: var(--primary-2);
+        background: rgba(201, 184, 255, 0.05);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 1.1rem 0 1rem;
+        font-size: clamp(2.7rem, 6vw, 5rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #ffffff, #d9ccff 45%, var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        max-width: 620px;
+        font-size: 1.1rem;
+        color: var(--muted);
+        margin-bottom: 2rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2.1rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0.8rem 1.35rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        background: var(--primary);
+        color: #050507;
+        box-shadow: 0 0 32px rgba(255, 255, 255, 0.14);
+      }
+
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.02);
+        border-color: var(--border);
+        color: var(--white);
+      }
+
+      .mini-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+      }
+
+      .mini-stat {
+        min-width: 120px;
+        padding: 0.85rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.015);
+      }
+
+      .mini-stat strong {
+        display: block;
+        font-size: 1.4rem;
+        margin-bottom: 0.1rem;
+      }
+
+      .mini-stat span {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .profile-card {
+        position: relative;
+        padding: 1.3rem;
+        border: 1px solid var(--border);
+        border-radius: 30px;
+        background: linear-gradient(180deg, rgba(20, 20, 27, 0.9), rgba(8, 8, 12, 0.88));
+        box-shadow: var(--shadow);
+      }
+
+      .profile-visual {
+        min-height: 420px;
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(201, 184, 255, 0.2), transparent 60%),
+          radial-gradient(circle at 50% 42%, rgba(255, 217, 176, 0.12), transparent 30%),
+          #07070b;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-badge {
+        width: 180px;
+        height: 180px;
+        border-radius: 32px;
+        display: grid;
+        place-items: center;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.04);
+      }
+
+      .logo-badge span {
+        font-size: clamp(3rem, 6vw, 4rem);
+        font-weight: 800;
+        letter-spacing: -0.08em;
+      }
+
+      .floating-tag {
+        position: absolute;
+        padding: 0.75rem 1rem;
+        border-radius: 14px;
+        background: rgba(8, 8, 12, 0.85);
+        border: 1px solid var(--border);
+        font-weight: 600;
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .floating-tag.one {
+        top: 26px;
+        right: 26px;
+      }
+
+      .floating-tag.two {
+        left: 20px;
+        bottom: 28px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .section-header {
+        margin-bottom: 2rem;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 2.9rem);
+        letter-spacing: -0.05em;
+      }
+
+      .section-header p {
+        margin-top: 0.6rem;
+        color: var(--muted);
+      }
+
+      .about-grid,
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.4rem;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 1.5rem;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(14px);
+      }
+
+      .card h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .card p,
+      .card li {
+        color: var(--muted);
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.1rem;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0.5rem 0.8rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--white);
+        font-size: 0.9rem;
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .project-visual {
+        min-height: 180px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(201, 184, 255, 0.16), rgba(255, 217, 176, 0.07));
+        border: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-visual::before,
+      .project-visual::after {
+        content: "";
+        position: absolute;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .project-visual::before {
+        width: 60%;
+        height: 58%;
+        top: 18%;
+        left: 18%;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .project-visual::after {
+        width: 24%;
+        height: 28%;
+        right: 12%;
+        bottom: 17%;
+        background: rgba(255, 217, 176, 0.16);
+      }
+
+      .project-card h3 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .project-card a {
+        color: var(--primary-2);
+        font-weight: 700;
+      }
+
+      .timeline {
+        margin-top: 1.4rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-left: 1.5rem;
+        border-left: 2px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        left: -7px;
+        top: 5px;
+      }
+
+      .timeline-item strong {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 0.15rem;
+      }
+
+      .timeline-item span {
+        color: var(--primary-2);
+        font-size: 0.86rem;
+      }
+
+      .timeline-item p {
+        margin: 0.5rem 0 0;
+        color: var(--muted);
+      }
+
+      .contact-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-card h3 {
+        margin: 0 0 0.15rem;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+      }
+
+      .contact-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .site-footer {
+        padding: 28px 0 48px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      /* ---------- Galaxy layer: starfield, nebulas, cursor glow, scroll progress ---------- */
+      main,
+      .site-footer {
+        position: relative;
+        z-index: 1;
+      }
+
+      .galaxy,
+      .nebula,
+      .cursor-glow {
+        position: fixed;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .galaxy {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Pinned intro: the sticky frame holds still while scrolling through .intro drives the galaxy zoom. */
+      .intro {
+        position: relative;
+        height: 260vh;
+      }
+
+      .intro-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .intro-title {
+        margin: 1.2rem 0 1rem;
+        font-size: clamp(3rem, 10vw, 8.5rem);
+        font-weight: 800;
+        line-height: 0.92;
+        letter-spacing: -0.06em;
+        text-shadow: 0 0 60px rgba(201, 184, 255, 0.25);
+      }
+
+      .intro-sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.35rem);
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--muted);
+        font-size: 0.75rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .scroll-hint span {
+        width: 1px;
+        height: 44px;
+        background: linear-gradient(var(--primary-2), transparent);
+      }
+
+      .nebula {
+        width: 46vmax;
+        height: 46vmax;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.22;
+      }
+
+      .nebula.one {
+        top: -14vmax;
+        left: -12vmax;
+        background: radial-gradient(circle, var(--nebula), transparent 65%);
+      }
+
+      .nebula.two {
+        bottom: -18vmax;
+        right: -14vmax;
+        background: radial-gradient(circle, #3a3f9a, transparent 65%);
+        opacity: 0.25;
+      }
+
+      .cursor-glow {
+        top: 0;
+        left: 0;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.06), rgba(201, 184, 255, 0.04) 40%, transparent 68%);
+        opacity: 0;
+      }
+
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        z-index: 20;
+        transform: scaleX(0);
+        transform-origin: left;
+        background: linear-gradient(90deg, var(--nebula), var(--primary-2), var(--accent));
+        box-shadow: 0 0 12px rgba(201, 184, 255, 0.6);
+      }
+
+      /* Spotlight that follows the pointer across a card; JS sets --mx, --my and --glow. */
+      .card {
+        position: relative;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: var(--glow, 0);
+        transition: opacity 0.35s ease;
+        background:
+          radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.07), transparent 60%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+      }
+
+      .pill {
+        transition: border-color 0.25s ease, background 0.25s ease;
+      }
+
+      .pill:hover {
+        border-color: rgba(201, 184, 255, 0.45);
+        background: rgba(201, 184, 255, 0.06);
+      }
+
+      /* Motion drives button transforms, so a CSS transform transition would make them lag. */
+      .motion-ready .button {
+        transition: box-shadow 0.2s ease;
+      }
+
+      @media (hover: none) {
+        .cursor-glow {
+          display: none;
+        }
+      }
+
+      /* Hidden until Motion animates them in; see the scripts in <head> and before </body>. */
+      .motion-ready :is(.intro-copy > *, .hero-inner > div:first-child > *, .profile-card, .section-header, .card, .timeline-item) {
+        opacity: 0;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .about-grid,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .hero {
+          padding-top: 72px;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .mini-stats {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+    <script>
+      // Opt into entrance animations only when motion is allowed. If Motion fails to load
+      // within 3s, drop the class so content is never left hidden.
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("motion-ready");
+        setTimeout(() => {
+          if (!window.motionStarted) document.documentElement.classList.remove("motion-ready");
+        }, 3000);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <canvas class="galaxy" aria-hidden="true"></canvas>
+    <div class="nebula one" aria-hidden="true"></div>
+    <div class="nebula two" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="brand">Pragendra <span>Nakarmi</span></a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact" class="nav-cta">Let’s Talk</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-label="Intro">
+        <div class="intro-sticky">
+          <div class="intro-copy">
+            <div class="eyebrow">Software Developer</div>
+            <div class="intro-title">Pragendra <span class="gradient-text">Nakarmi</span></div>
+            <p class="intro-sub">Building modern ideas into digital products.</p>
+          </div>
+          <div class="scroll-hint" aria-hidden="true">Scroll to explore<span></span></div>
+        </div>
+      </section>
+
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <div class="eyebrow">Software Developer</div>
+            <h1>
+              Building <span class="gradient-text">modern ideas</span>
+              into digital products.
+            </h1>
+            <p>
+              I’m Pragendra Nakarmi, a developer focused on crafting thoughtful user experiences,
+              scalable web solutions, and clean interfaces that solve real-world problems.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="button primary">View Projects</a>
+              <a href="#contact" class="button secondary">Contact Me</a>
+            </div>
+            <div class="mini-stats" aria-label="Quick stats">
+              <div class="mini-stat">
+                <strong>4+</strong>
+                <span>Years Experience</span>
+              </div>
+              <div class="mini-stat">
+                <strong>20+</strong>
+                <span>Projects Delivered</span>
+              </div>
+              <div class="mini-stat">
+                <strong>100%</strong>
+                <span>Problem Focused</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card" aria-label="Profile card">
+            <div class="profile-visual">
+              <div class="logo-badge"><span>PN</span></div>
+              <div class="floating-tag one">UI / UX</div>
+              <div class="floating-tag two">Web Developer</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-header">
+            <h2>About Me</h2>
+            <p>I combine design thinking with technical execution to create experiences people enjoy using.</p>
+          </div>
+          <div class="about-grid">
+            <article class="card">
+              <h3>Who I Am</h3>
+              <p>
+                I’m a developer who enjoys turning complex requirements into simple, elegant solutions.
+                My work blends front-end craftsmanship, product thinking, and practical engineering discipline.
+              </p>
+            </article>
+            <article class="card">
+              <h3>What I Do</h3>
+              <p>
+                I design and build responsive interfaces, optimize user flows, and create tools that help teams move faster and work smarter.
+              </p>
+            </article>
+            <article class="card">
+              <h3>How I Work</h3>
+              <p>
+                I focus on clarity, performance, and reliability — making sure each product is useful, accessible, and built to scale with confidence.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-header">
+            <h2>Skills</h2>
+            <p>Tools and technologies I use to build and deliver quality digital experiences.</p>
+          </div>
+          <div class="grid-3">
+            <article class="card">
+              <h3>Frontend</h3>
+              <div class="skills-list">
+                <span class="pill">HTML5</span>
+                <span class="pill">CSS3</span>
+                <span class="pill">JavaScript</span>
+                <span class="pill">React</span>
+                <span class="pill">TypeScript</span>
+                <span class="pill">Responsive Design</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3>Backend</h3>
+              <div class="skills-list">
+                <span class="pill">Node.js</span>
+                <span class="pill">Express</span>
+                <span class="pill">REST APIs</span>
+                <span class="pill">SQL</span>
+                <span class="pill">MongoDB</span>
+                <span class="pill">Authentication</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3>Workflow</h3>
+              <div class="skills-list">
+                <span class="pill">Git</span>
+                <span class="pill">GitHub</span>
+                <span class="pill">Figma</span>
+                <span class="pill">Agile</span>
+                <span class="pill">Testing</span>
+                <span class="pill">Performance</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2>Featured Projects</h2>
+            <p>A few examples of the kind of work I enjoy creating and delivering.</p>
+          </div>
+          <div class="grid-3">
+            <article class="card project-card">
+              <div class="project-visual" aria-hidden="true"></div>
+              <div>
+                <h3>Analytics Dashboard</h3>
+                <div class="meta">Business Intelligence • SaaS</div>
+              </div>
+              <p>
+                A clean analytics platform designed to help businesses track performance, trends, and KPIs through an intuitive dashboard.
+              </p>
+              <div class="skills-list">
+                <span class="pill">React</span>
+                <span class="pill">Charting</span>
+                <span class="pill">UI Design</span>
+              </div>
+              <a href="#contact">View case study →</a>
+            </article>
+
+            <article class="card project-card">
+              <div class="project-visual" aria-hidden="true"></div>
+              <div>
+                <h3>E-commerce Experience</h3>
+                <div class="meta">Retail • Conversion Focus</div>
+              </div>
+              <p>
+                Reimagined a storefront experience with streamlined checkout flows, mobile-first browsing, and stronger product discovery.
+              </p>
+              <div class="skills-list">
+                <span class="pill">Frontend</span>
+                <span class="pill">UX</span>
+                <span class="pill">Optimization</span>
+              </div>
+              <a href="#contact">View case study →</a>
+            </article>
+
+            <article class="card project-card">
+              <div class="project-visual" aria-hidden="true"></div>
+              <div>
+                <h3>Productivity Platform</h3>
+                <div class="meta">Collaboration • Productivity</div>
+              </div>
+              <p>
+                Built a task and project management workflow to improve team coordination with actionable planning and visibility.
+              </p>
+              <div class="skills-list">
+                <span class="pill">Node.js</span>
+                <span class="pill">Database</span>
+                <span class="pill">APIs</span>
+              </div>
+              <a href="#contact">View case study →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+          <div class="section-header">
+            <h2>Experience</h2>
+            <p>My approach is grounded in practical problem-solving and building sustainable product experiences.</p>
+          </div>
+          <div class="card timeline">
+            <div class="timeline-item">
+              <strong>Frontend Developer</strong>
+              <span>2019 — Present</span>
+              <p>Developed responsive interfaces and user-centric web applications with a strong focus on maintainability and usability.</p>
+            </div>
+            <div class="timeline-item">
+              <strong>Full-Stack Engineer</strong>
+              <span>2021 — 2023</span>
+              <p>Built and shipped full-stack solutions, including dashboards, APIs, and business workflows tailored for real user needs.</p>
+            </div>
+            <div class="timeline-item">
+              <strong>Product & Design Collaboration</strong>
+              <span>2018 — 2019</span>
+              <p>Worked closely with stakeholders, designers, and teams to transform ideas into polished and usable product experiences.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="card contact-card">
+            <div>
+              <h3>Let’s build something meaningful.</h3>
+              <p>Open to freelance projects, collaborations, and product opportunities.</p>
+            </div>
+            <div class="hero-actions" style="margin: 0;">
+              <a href="mailto:hello@pragendranakarmi.com" class="button primary">hello@pragendranakarmi.com</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© 2026 Pragendra Nakarmi</div>
+        <div>Built with passion for design, code, and problem solving.</div>
+      </div>
+    </footer>
+
+    <script>
+      // Galaxy: a 3-arm spiral of particles drawn in 3D on a fixed canvas. Scrolling through .intro
+      // rotates it and flies the camera into the core; afterwards it dims and keeps turning behind the page.
+      // Plain canvas, so it still renders if Motion fails to load; a single static frame under reduced motion.
+      (() => {
+        const canvas = document.querySelector(".galaxy");
+        const ctx = canvas.getContext("2d");
+        const intro = document.querySelector(".intro");
+        const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const lerp = (a, b, t) => a + (b - a) * t;
+        const clamp01 = (v) => Math.min(1, Math.max(0, v));
+
+        // Color by distance from the core: warm white -> lavender -> indigo -> slate blue.
+        const stops = [[255, 236, 210], [201, 184, 255], [128, 118, 220], [92, 108, 170]];
+        const colorAt = (t) => {
+          const i = Math.min(stops.length - 2, Math.floor(t * (stops.length - 1)));
+          const k = t * (stops.length - 1) - i;
+          return stops[i].map((c, j) => Math.round(lerp(c, stops[i + 1][j], k)));
+        };
+
+        // Particles are grouped into color buckets so fillStyle changes once per bucket, not per particle.
+        const BUCKETS = 12;
+        const buckets = Array.from({ length: BUCKETS + 1 }, (_, b) => ({
+          style: b < BUCKETS ? `rgb(${colorAt(b / (BUCKETS - 1)).join(",")})` : "rgb(240, 240, 245)",
+          pts: [],
+        }));
+        const jitter = (r) => Math.pow(Math.random(), 3) * (Math.random() < 0.5 ? 1 : -1) * 0.32 * (r + 0.1);
+
+        const ARMS = 3;
+        const count = innerWidth < 700 ? 2600 : 5200;
+        for (let i = 0; i < count; i++) {
+          const r = Math.pow(Math.random(), 1.5);
+          const angle = ((i % ARMS) / ARMS) * Math.PI * 2 + r * 5.5;
+          const x = Math.cos(angle) * r + jitter(r);
+          const z = Math.sin(angle) * r + jitter(r);
+          const y = jitter(r) * 0.35 + (Math.random() - 0.5) * 0.12 * (1 - r) ** 2;
+          buckets[Math.min(BUCKETS - 1, Math.floor(r * BUCKETS))].pts.push(x, y, z, 0.6 + Math.random(), 0.45 + Math.random() * 0.55);
+        }
+        // Distant background stars on a shell around the galaxy.
+        for (let i = 0; i < 900; i++) {
+          const u = Math.random() * 2 - 1;
+          const t = Math.random() * Math.PI * 2;
+          const d = 5 + Math.random() * 5;
+          const s = Math.sqrt(1 - u * u);
+          buckets[BUCKETS].pts.push(Math.cos(t) * s * d, u * d, Math.sin(t) * s * d, 0.8 + Math.random() * 0.6, 0.3 + Math.random() * 0.5);
+        }
+
+        let w = 0;
+        let h = 0;
+        let progress = 0;
+        let mx = 0;
+        let my = 0;
+        let targetMx = 0;
+        let targetMy = 0;
+
+        const resize = () => {
+          const dpr = Math.min(devicePixelRatio || 1, 1.5);
+          w = innerWidth;
+          h = innerHeight;
+          canvas.width = w * dpr;
+          canvas.height = h * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+
+        const introProgress = () => clamp01(scrollY / Math.max(1, intro.offsetHeight - innerHeight));
+
+        const draw = (time = 0) => {
+          // Ease toward the scroll and pointer targets so the camera glides instead of stepping.
+          const target = introProgress();
+          progress = still ? target : lerp(progress, target, 0.08);
+          mx = lerp(mx, targetMx, 0.05);
+          my = lerp(my, targetMy, 0.05);
+
+          const e = progress * progress * (3 - 2 * progress);
+          const pastIntro = Math.max(0, scrollY - (intro.offsetHeight - innerHeight));
+          const dist = lerp(2.9, 0.22, e);
+          const tilt = lerp(1.0, 1.38, e) + my * 0.12;
+          const spin = (still ? 0 : time * 0.00004) + e * 1.6 + pastIntro * 0.0004 + mx * 0.25;
+          // Dim once the zoom finishes, and further across the first screen of content so text stays readable.
+          const brightness = (1 - 0.75 * clamp01((progress - 0.75) / 0.25)) * (1 - 0.55 * clamp01(pastIntro / innerHeight));
+          const f = 1.15 * Math.min(w, h * 1.4);
+          // After the intro, slide the core right (behind the profile card) on wide screens, away from body copy.
+          const cx = w / 2 + (w > 900 ? clamp01(pastIntro / innerHeight) * w * 0.2 : 0);
+          const cy = h / 2;
+          const cosA = Math.cos(spin);
+          const sinA = Math.sin(spin);
+          const cosT = Math.cos(tilt);
+          const sinT = Math.sin(tilt);
+
+          ctx.clearRect(0, 0, w, h);
+          ctx.globalCompositeOperation = "lighter";
+
+          // Core glow, swelling as the camera closes in.
+          const glowR = Math.min((f / dist) * 0.45, Math.max(w, h));
+          const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowR);
+          glow.addColorStop(0, `rgba(255, 228, 196, ${0.35 * brightness})`);
+          glow.addColorStop(0.4, `rgba(170, 150, 255, ${0.1 * brightness})`);
+          glow.addColorStop(1, "rgba(0, 0, 0, 0)");
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = glow;
+          ctx.fillRect(0, 0, w, h);
+
+          for (const { style, pts } of buckets) {
+            ctx.fillStyle = style;
+            for (let i = 0; i < pts.length; i += 5) {
+              // Spin in the galaxy plane, tilt toward the camera, then project.
+              const x = pts[i] * cosA - pts[i + 2] * sinA;
+              const z0 = pts[i] * sinA + pts[i + 2] * cosA;
+              const y = pts[i + 1] * cosT - z0 * sinT;
+              const z = pts[i + 1] * sinT + z0 * cosT + dist;
+              if (z < 0.02) continue;
+              const sx = cx + (x * f) / z;
+              const sy = cy + (y * f) / z;
+              if (sx < -4 || sx > w + 4 || sy < -4 || sy > h + 4) continue;
+              const size = Math.min(3.5, Math.max(0.5, (pts[i + 3] * f * 0.0035) / z));
+              ctx.globalAlpha = pts[i + 4] * brightness * Math.min(1, (z - 0.02) / 0.15);
+              ctx.fillRect(sx - size / 2, sy - size / 2, size, size);
+            }
+          }
+          ctx.globalCompositeOperation = "source-over";
+
+          if (!still) requestAnimationFrame(draw);
+        };
+
+        resize();
+        addEventListener("resize", () => {
+          resize();
+          if (still) draw();
+        });
+        if (still) {
+          addEventListener("scroll", () => draw(), { passive: true });
+          draw();
+        } else {
+          addEventListener("pointermove", (e) => {
+            targetMx = e.clientX / w - 0.5;
+            targetMy = e.clientY / h - 0.5;
+          });
+          requestAnimationFrame(draw);
+        }
+      })();
+    </script>
+
+    <script type="module">
+      const root = document.documentElement;
+
+      if (root.classList.contains("motion-ready")) {
+        try {
+          const { animate, scroll, inView, hover, stagger } = await import("https://cdn.jsdelivr.net/npm/motion@12.43.0/+esm");
+          window.motionStarted = true;
+
+          const reveal = { duration: 0.9, ease: [0.22, 1, 0.36, 1] };
+          const hoverSpring = { type: "spring", stiffness: 300, damping: 22 };
+          const blurIn = { opacity: [0, 1], filter: ["blur(10px)", "blur(0px)"] };
+          const play = (els, keyframes, options) => els.length && animate(els, keyframes, options);
+
+          // Intro: name blurs in on load, then blurs out and pushes toward the camera while the
+          // galaxy zoom plays. Linked to scroll through the pinned .intro; gone by 35% of the way.
+          const intro = document.querySelector(".intro");
+          const introScroll = { target: intro, offset: ["start start", "end end"] };
+          animate(".intro-copy > *", { ...blurIn, y: [24, 0] }, { duration: 1.2, ease: reveal.ease, delay: stagger(0.15, { startDelay: 0.2 }) });
+          scroll(
+            animate(".intro-copy", { opacity: [1, 0, 0], scale: [1, 1.25, 1.25], filter: ["blur(0px)", "blur(14px)", "blur(14px)"] }, { ease: "linear", times: [0, 0.35, 1] }),
+            introScroll
+          );
+          scroll(animate(".scroll-hint", { opacity: [1, 0, 0] }, { ease: "linear", times: [0, 0.1, 1] }), introScroll);
+
+          // Hero entrance once it scrolls in: copy blurs in line by line, then the profile card springs in.
+          // Opacity and blur use a tween so the spring's overshoot only affects scale.
+          inView(
+            ".hero",
+            () => {
+              animate(".hero-inner > div:first-child > *", { ...blurIn, y: [28, 0] }, { ...reveal, delay: stagger(0.09) });
+              animate(
+                ".profile-card",
+                { ...blurIn, scale: [0.9, 1] },
+                { type: "spring", visualDuration: 0.9, bounce: 0.3, delay: 0.3, opacity: { ...reveal, delay: 0.3 }, filter: { ...reveal, delay: 0.3 } }
+              );
+            },
+            { margin: "0px 0px -15% 0px" }
+          );
+
+          // Ambient motion: drifting nebulas, bobbing tags, and a scroll progress bar.
+          animate(".nebula.one", { x: [0, 120, -60, 0], y: [0, 80, 140, 0], scale: [1, 1.2, 0.9, 1] }, { duration: 30, repeat: Infinity, ease: "easeInOut" });
+          animate(".nebula.two", { x: [0, -100, 40, 0], y: [0, -120, -40, 0], scale: [1, 0.85, 1.15, 1] }, { duration: 36, repeat: Infinity, ease: "easeInOut" });
+          animate(".floating-tag", { y: [0, -10, 0] }, { duration: 4, repeat: Infinity, ease: "easeInOut", delay: stagger(1.2) });
+          scroll(animate(".scroll-progress", { scaleX: [0, 1] }, { ease: "linear" }));
+
+          // Hero parallax, linked to scroll: copy rises and fades, the badge turns, the visual sinks.
+          const heroScroll = { target: document.querySelector(".hero"), offset: ["start start", "end start"] };
+          scroll(animate(".hero-inner > div:first-child", { y: [0, -120], opacity: [1, 0] }, { ease: "linear" }), heroScroll);
+          scroll(animate(".logo-badge", { rotate: [0, 45], scale: [1, 0.8] }, { ease: "linear" }), heroScroll);
+          scroll(animate(".profile-visual", { y: [0, 60] }, { ease: "linear" }), heroScroll);
+
+          // Sections: header and cards blur in with a stagger, timeline entries slide in, once each.
+          inView(
+            "main > section:not(.hero)",
+            (section) => {
+              play(section.querySelectorAll(".section-header, .card"), { ...blurIn, y: [40, 0] }, { ...reveal, delay: stagger(0.1) });
+              play(section.querySelectorAll(".timeline-item"), { opacity: [0, 1], x: [-32, 0] }, { ...reveal, delay: stagger(0.15, { startDelay: 0.3 }) });
+            },
+            { margin: "0px 0px -10% 0px" }
+          );
+
+          // Cards: 3D tilt toward the pointer with a spotlight that follows it (gentler on wide cards).
+          hover(".card", (card) => {
+            const strength = card.closest(".grid-3, .about-grid") ? 12 : 3;
+            card.style.setProperty("--glow", "1");
+            const tilt = (e) => {
+              const r = card.getBoundingClientRect();
+              const px = (e.clientX - r.left) / r.width;
+              const py = (e.clientY - r.top) / r.height;
+              card.style.setProperty("--mx", `${px * 100}%`);
+              card.style.setProperty("--my", `${py * 100}%`);
+              animate(card, { rotateX: (0.5 - py) * strength, rotateY: (px - 0.5) * strength, y: -8, transformPerspective: 900 }, hoverSpring);
+            };
+            card.addEventListener("pointermove", tilt);
+            return () => {
+              card.removeEventListener("pointermove", tilt);
+              card.style.setProperty("--glow", "0");
+              animate(card, { rotateX: 0, rotateY: 0, y: 0 }, hoverSpring);
+            };
+          });
+
+          // Magnetic buttons: pulled toward the pointer, springing back with a wobble on leave.
+          hover(".button, .nav-cta", (button) => {
+            const pull = (e) => {
+              const r = button.getBoundingClientRect();
+              animate(button, { x: (e.clientX - r.left - r.width / 2) * 0.3, y: (e.clientY - r.top - r.height / 2) * 0.4, scale: 1.05 }, hoverSpring);
+            };
+            button.addEventListener("pointermove", pull);
+            return () => {
+              button.removeEventListener("pointermove", pull);
+              animate(button, { x: 0, y: 0, scale: 1 }, { type: "spring", stiffness: 350, damping: 12 });
+            };
+          });
+
+          hover(".pill", (pill) => {
+            animate(pill, { scale: 1.08, y: -2 }, hoverSpring);
+            return () => animate(pill, { scale: 1, y: 0 }, hoverSpring);
+          });
+
+          // Cursor glow trails the pointer on a soft spring.
+          const glow = document.querySelector(".cursor-glow");
+          const glowSpring = { type: "spring", stiffness: 120, damping: 20, mass: 0.6 };
+          addEventListener("pointermove", (e) => {
+            if (e.pointerType === "touch") return;
+            animate(glow, { x: e.clientX - 260, y: e.clientY - 260, opacity: 1 }, glowSpring);
+          });
+          document.documentElement.addEventListener("pointerleave", () => animate(glow, { opacity: 0 }, { duration: 0.4 }));
+        } catch {
+          root.classList.remove("motion-ready");
+        }
+      }
+    </script>
+  </body>
+</html>
